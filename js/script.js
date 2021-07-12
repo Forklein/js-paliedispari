@@ -44,3 +44,43 @@ Sommiamo i due numeri
 Stabiliamo se la somma dei due numeri è pari o dispari(usando una funzione)
 Dichiariamo chi ha vinto. */
 
+
+var numberElement = document.getElementById('num');
+var evenElement = document.getElementById('even');
+var oddElement = document.getElementById('odd');
+var bntPlay = document.getElementById('btn-play');
+var winnerDisplay = document.getElementById('winner');
+
+function randomChoice() {
+    var numberRandom = Math.floor(Math.random() * 5) + 1;
+    return numberRandom;
+}
+
+function isEven(number) {
+    if (number % 2 === 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bntPlay.addEventListener('click', function () {
+    var pcNumber = randomChoice();
+    console.log('La scelta del PC è ', pcNumber);
+    console.log('La scelta dell utente è ', parseInt(numberElement.value));
+    var sum = pcNumber + parseInt(numberElement.value);
+    console.log('La somma dei due numeri è', sum);
+    if (isEven(sum)) {
+        if (evenElement.checked) {
+            winnerDisplay.innerHTML = '<strong>' + 'Hai vinto!' + '</strong>'
+        } else {
+            winnerDisplay.innerHTML = '<strong>' + 'Hai perso!' + '</strong>'
+        }
+    } else {
+        if (oddElement.checked) {
+            winnerDisplay.innerHTML = '<strong>' + 'Hai vinto!' + '</strong>'
+        } else {
+            winnerDisplay.innerHTML = '<strong>' + 'Hai perso!' + '</strong>'
+        }
+    }
+});
