@@ -5,22 +5,31 @@ Chiedere all’utente di inserire una parola
 Creare una funzione per capire se la parola inserita è palindroma */
 
 var btnGenerate = document.getElementById('generate');
-var resultDispaly = document.getElementById('result');
+var resultDisplay = document.getElementById('result');
 var wordDisplay = document.getElementById('word');
 
-function isPal(wordElement) {
-    var wordElement = wordDisplay.value.toLowerCase();
-    var splitWord = wordElement.split('');
+function isPal(parola) {
+    var splitWord = parola.split('');
     var reverseWord = splitWord.reverse();
     var invertWord = reverseWord.join('');
-    if (invertWord === wordElement) {
-        resultDispaly.innerText = 'La parola inserita è palindroma';
-    }
-    else {
-        resultDispaly.innerText = 'La parola inserita non è palindroma';
+    if (invertWord === parola) {
+        return true;
+    } else {
+        return false;
     }
 }
-btnGenerate.addEventListener('click', isPal)
+
+btnGenerate.addEventListener('click', function () {
+    var wordElement = wordDisplay.value.toLowerCase();
+    while (!wordElement || wordElement.trim() === '' || !isNaN(wordElement)) {
+        resultDisplay.innerText = 'Error!';
+    };
+    if (isPal(wordElement)) {
+        resultDisplay.innerText = 'La parola inserita è palindroma';
+    } else {
+        resultDisplay.innerText = 'La parola inserita non è palindroma';
+    }
+});
 
 
 

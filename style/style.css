@@ -8,10 +8,11 @@ body{
     background-color: darkkhaki;
 }
 
-.container{
+.box{
     width: 500px;
     margin: 0 auto;
     text-align: center;
     margin-top: 50px;
     background-color: chocolate;
+    padding: 20px 0;
 }
