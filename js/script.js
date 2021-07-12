@@ -9,14 +9,24 @@ var resultDisplay = document.getElementById('result');
 var wordDisplay = document.getElementById('word');
 
 function isPal(parola) {
-    var splitWord = parola.split('');
-    var reverseWord = splitWord.reverse();
-    var invertWord = reverseWord.join('');
-    if (invertWord === parola) {
-        return true;
-    } else {
-        return false;
+    var result = true;
+    /*     var splitWord = parola.split('');
+        console.log(splitWord)
+        var reverseWord = splitWord.reverse();
+        console.log(reverseWord)
+        var invertWord = reverseWord.join('');
+        console.log(invertWord)
+        if (invertWord === parola) {
+            return true;
+        } else {
+            return false;
+        } */
+    for (var i = 0; i < parola.length / 2; i++) {
+        if (parola[i] !== parola[parola.length - 1 - i]) {
+            result = false;
+        }
     }
+    return result;
 }
 
 btnGenerate.addEventListener('click', function () {
@@ -49,8 +59,9 @@ var oddElement = document.getElementById('odd');
 var bntPlay = document.getElementById('btn-play');
 var winnerDisplay = document.getElementById('winner');
 
-function randomChoice() {
-    var numberRandom = Math.floor(Math.random() * 5) + 1;
+//! Max non incluso
+function randomChoice(max, min) {
+    var numberRandom = Math.floor(Math.random() * (max - min)) + min;
     return numberRandom;
 }
 
@@ -63,7 +74,7 @@ function isEven(number) {
 }
 
 bntPlay.addEventListener('click', function () {
-    var pcNumber = randomChoice();
+    var pcNumber = randomChoice(6, 1);
     console.log('La scelta del PC è ', pcNumber);
     console.log('La scelta dell utente è ', parseInt(numberElement.value));
     var sum = pcNumber + parseInt(numberElement.value);
