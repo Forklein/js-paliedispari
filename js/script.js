@@ -22,7 +22,8 @@ function isPal(parola) {
 btnGenerate.addEventListener('click', function () {
     var wordElement = wordDisplay.value.toLowerCase();
     while (!wordElement || wordElement.trim() === '' || !isNaN(wordElement)) {
-        resultDisplay.innerText = 'Error!';
+        alert('Hai inserito dati errati');
+        return
     };
     if (isPal(wordElement)) {
         resultDisplay.innerText = 'La parola inserita è palindroma';
